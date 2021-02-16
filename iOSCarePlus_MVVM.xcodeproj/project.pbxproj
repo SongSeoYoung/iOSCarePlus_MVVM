@@ -60,15 +60,55 @@
 		7C3748C025D97DBE000E8B65 /* iOSCarePlus_MVVM */ = {
 			isa = PBXGroup;
 			children = (
-				7C3748C125D97DBE000E8B65 /* AppDelegate.swift */,
-				7C3748C325D97DBE000E8B65 /* SceneDelegate.swift */,
-				7C3748C525D97DBE000E8B65 /* ViewController.swift */,
-				7C3748C725D97DBE000E8B65 /* Main.storyboard */,
+				7C37494C25DBA077000E8B65 /* Model */,
+				7C37494E25DBA081000E8B65 /* ViewModel */,
+				7C37494D25DBA07C000E8B65 /* View */,
 				7C3748CA25D97DC3000E8B65 /* Assets.xcassets */,
 				7C3748CC25D97DC3000E8B65 /* LaunchScreen.storyboard */,
 				7C3748CF25D97DC3000E8B65 /* Info.plist */,
+				7C3748C125D97DBE000E8B65 /* AppDelegate.swift */,
+				7C3748C325D97DBE000E8B65 /* SceneDelegate.swift */,
+				7C37495025DBA092000E8B65 /* SupportingFiles */,
 			);
 			path = iOSCarePlus_MVVM;
+			sourceTree = "<group>";
+		};
+		7C37494C25DBA077000E8B65 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7C37494D25DBA07C000E8B65 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7C37495225DBA0C4000E8B65 /* ViewController */,
+				7C3748C725D97DBE000E8B65 /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7C37494E25DBA081000E8B65 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		7C37495025DBA092000E8B65 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		7C37495225DBA0C4000E8B65 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7C3748C525D97DBE000E8B65 /* ViewController.swift */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
