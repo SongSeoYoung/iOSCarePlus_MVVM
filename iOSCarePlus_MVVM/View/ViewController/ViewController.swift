@@ -48,12 +48,10 @@ class ViewController: UIViewController {
     private func setUI() {
         self.appView.layer.cornerRadius = 8.0
     }
-
 }
 
 // MARK: - Animation
 extension ViewController {
-    
     private func appearLogoViewAnimation(completion: @escaping () -> Void) {
         UIView.animate(
             withDuration: 0.7,
