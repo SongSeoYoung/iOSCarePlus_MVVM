@@ -14,16 +14,13 @@ class GameItemTableViewCell: UITableViewCell {
     @IBOutlet weak var gameDiscountLabel: UILabel!
     @IBOutlet weak var gameNameLabel: UILabel!
     @IBOutlet weak var gameImage: UIImageView!
-    
+    let viewModel = GameItemCellViewModel()
     override func awakeFromNib() {
-        super.awakeFromNib()  
+        super.awakeFromNib()
+        setLayout()
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
+    
+  
     
     func setLayout() {
         gameImage.snp.makeConstraints {

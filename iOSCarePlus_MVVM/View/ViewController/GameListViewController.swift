@@ -5,6 +5,8 @@
 //  Created by 송서영 on 2021/02/18.
 //
 
+//MARK:  ViewModel 에서 model 을 참고해도될까? 모델이 업데이트될 때 마다 테이블뷰가 리로드되는 컴퓨티드프로퍼티를 만들어서 didSEt 일 때 업데이트되도록하는 것.
+
 import UIKit
 
 class GameListViewController: UIViewController {
@@ -17,13 +19,19 @@ class GameListViewController: UIViewController {
     @IBOutlet private weak var buttonLine: UIView!
     @IBOutlet private weak var gameListTableView: UITableView!
     // MARK: - ViewModel
-    let viewModel = GameListViewModel()
-    
+    let viewModel: GameListViewModel = GameListViewModel()
+    var viewModelmodel: NewGameResponse? {
+        didSet {
+            print("update tableView")
+            gameListTableView.reloadData()
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         setLayout()
         self.navigationController?.navigationBar.isHidden = true
         topViewSubView.layer.cornerRadius = 8.0
+        viewModel.gameListApiCall(viewModel.gameNewItemListURL)
     }
     
     // MARK: - Set Layout
@@ -31,12 +39,6 @@ class GameListViewController: UIViewController {
         gameListTableView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
-//        topView.snp.makeConstraints {
-//            $0.height.equalTo(500)
-//            $0.leading.equalTo(gameListTableView.snp.leading)
-//            $0.top.equalTo(gameListTableView.snp.top)
-//            $0.trailing.equalTo(gameListTableView.snp.trailing)
-//        }
         topViewTitleNameLabel.snp.makeConstraints {
             $0.leading.trailing.equalToSuperview().offset(20)
             $0.top.equalTo(topView).offset(36)
@@ -65,5 +67,48 @@ class GameListViewController: UIViewController {
             $0.top.equalTo(newBtn.snp.bottom).offset(4)
             $0.leading.equalTo(newBtn)
         }
+    }
+}
+
+// MARK: - tableView DataSource & Delegate
+extension GameListViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if viewModel.isEnd {
+            //new Model 이 없을 때
+            return (viewModel.model?.contents.count ?? 0)
+        } else {
+            if viewModel.model == nil {
+                //통신 이전에는 model 이 비어있으니 그럴 경우 셀 0개 반환
+                return 0
+            }
+            return (viewModel.model?.contents.count ?? 0) + 1     //무한스크롤링을 위해 하나 더 그려주도록한다.
+        }
+    }
+    
+    //display 하기 직전 cell for row at 보다 더 빨리 불린다.
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if viewModel.isIndicatorCell(indexPath) {
+            viewModel.newOffset += 10
+            viewModel.gameListApiCall(viewModel.gameNewItemListURL)
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if viewModel.isIndicatorCell(indexPath) {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "IndicatorTableViewCell", for: indexPath) as? IndicatorTableViewCell else { return UITableViewCell() }
+            cell.animationIndicatorView()
+            return cell
+        }
+        guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: "GameItemTableViewCell", for: indexPath) as? GameItemTableViewCell ,
+              let content = viewModel.model?.contents[indexPath.row] else { return UITableViewCell() }
+        let model: GameItemModel = GameItemModel( gameTitle: content.formalName,
+                                                  gameOriginPrice: 100,
+                                                  gameDiscountPrice: nil,
+                                                  imageURL: content.heroBannerURL,
+                                                  screenshots: content.screenshots
+        )
+        cell.viewModel.setModel(model)
+        return cell
     }
 }
