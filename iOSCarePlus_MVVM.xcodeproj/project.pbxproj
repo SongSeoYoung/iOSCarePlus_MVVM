@@ -21,6 +21,8 @@
 		7C37498B25DE58A8000E8B65 /* GameListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C37498A25DE58A8000E8B65 /* GameListViewModel.swift */; };
 		7C37498E25DE61B0000E8B65 /* SelectableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C37498D25DE61B0000E8B65 /* SelectableButton.swift */; };
 		7C37499225DE63E3000E8B65 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C37499125DE63E3000E8B65 /* Colors.xcassets */; };
+		7C37499725DE666A000E8B65 /* GameItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C37499625DE666A000E8B65 /* GameItemTableViewCell.swift */; };
+		7C37499A25DE6681000E8B65 /* IndicatorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C37499925DE6681000E8B65 /* IndicatorTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,8 @@
 		7C37498A25DE58A8000E8B65 /* GameListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListViewModel.swift; sourceTree = "<group>"; };
 		7C37498D25DE61B0000E8B65 /* SelectableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectableButton.swift; sourceTree = "<group>"; };
 		7C37499125DE63E3000E8B65 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		7C37499625DE666A000E8B65 /* GameItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameItemTableViewCell.swift; sourceTree = "<group>"; };
+		7C37499925DE6681000E8B65 /* IndicatorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +102,7 @@
 		7C37494D25DBA07C000E8B65 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7C37499525DE6650000E8B65 /* Cell */,
 				7C37495225DBA0C4000E8B65 /* ViewController */,
 				7C3748C725D97DBE000E8B65 /* Main.storyboard */,
 				7C37498D25DE61B0000E8B65 /* SelectableButton.swift */,
@@ -127,6 +132,15 @@
 				7C37498725DE5872000E8B65 /* GameListViewController.swift */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		7C37499525DE6650000E8B65 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				7C37499625DE666A000E8B65 /* GameItemTableViewCell.swift */,
+				7C37499925DE6681000E8B65 /* IndicatorTableViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -233,9 +247,11 @@
 				7C37498B25DE58A8000E8B65 /* GameListViewModel.swift in Sources */,
 				7C37498E25DE61B0000E8B65 /* SelectableButton.swift in Sources */,
 				7C37495625DBB84A000E8B65 /* GameItemModel.swift in Sources */,
+				7C37499A25DE6681000E8B65 /* IndicatorTableViewCell.swift in Sources */,
 				7C3748C625D97DBE000E8B65 /* ViewController.swift in Sources */,
 				7C3748C225D97DBE000E8B65 /* AppDelegate.swift in Sources */,
 				7C37495925DBB878000E8B65 /* NewGameResponse.swift in Sources */,
+				7C37499725DE666A000E8B65 /* GameItemTableViewCell.swift in Sources */,
 				7C37498825DE5872000E8B65 /* GameListViewController.swift in Sources */,
 				7C3748C425D97DBE000E8B65 /* SceneDelegate.swift in Sources */,
 			);

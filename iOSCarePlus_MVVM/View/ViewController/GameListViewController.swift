@@ -8,15 +8,15 @@
 import UIKit
 
 class GameListViewController: UIViewController {
-
-    @IBOutlet weak var topView: UIView!
-    @IBOutlet weak var topViewTitleNameLabel: UILabel!
-    @IBOutlet weak var topViewSubNameLabel: UILabel!
-    @IBOutlet weak var topViewSubView: UIView!
-    @IBOutlet weak var newBtn: UIButton!
-    @IBOutlet weak var saleBtn: UIButton!
-    @IBOutlet weak var buttonLine: UIView!
+    @IBOutlet private weak var topView: UIView!
+    @IBOutlet private weak var topViewTitleNameLabel: UILabel!
+    @IBOutlet private weak var topViewSubNameLabel: UILabel!
+    @IBOutlet private weak var topViewSubView: UIView!
+    @IBOutlet private weak var newBtn: UIButton!
+    @IBOutlet private weak var saleBtn: UIButton!
+    @IBOutlet private weak var buttonLine: UIView!
     @IBOutlet private weak var gameListTableView: UITableView!
+    // MARK: - ViewModel
     let viewModel = GameListViewModel()
     
     override func viewDidLoad() {
@@ -26,6 +26,7 @@ class GameListViewController: UIViewController {
         topViewSubView.layer.cornerRadius = 8.0
     }
     
+    // MARK: - Set Layout
     func setLayout() {
         gameListTableView.snp.makeConstraints {
             $0.edges.equalToSuperview()
@@ -61,7 +62,8 @@ class GameListViewController: UIViewController {
         buttonLine.snp.makeConstraints {
             $0.height.equalTo(2)
             $0.width.equalTo(60)
-            $0.top.equalTo(newBtn).offset(4)
+            $0.top.equalTo(newBtn.snp.bottom).offset(4)
+            $0.leading.equalTo(newBtn)
         }
     }
 }

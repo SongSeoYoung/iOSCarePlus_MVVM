@@ -130,12 +130,8 @@ Store</string>
                                     </subviews>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 </view>
-                                <activityIndicatorView key="tableFooterView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" id="8xL-kh-PZl">
-                                    <rect key="frame" x="0.0" y="584" width="414" height="80"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                </activityIndicatorView>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="92" id="JUD-ox-PQK">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="GameItemTableViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="92" id="JUD-ox-PQK" customClass="GameItemTableViewCell" customModule="iOSCarePlus_MVVM" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="464" width="414" height="92"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JUD-ox-PQK" id="AlV-Fy-jiA">
@@ -169,8 +165,35 @@ Store</string>
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="gameDiscountLabel" destination="t8t-SB-toT" id="IrM-gr-vMw"/>
+                                            <outlet property="gameImage" destination="MpW-yh-OTu" id="8Yg-kq-7Kc"/>
+                                            <outlet property="gameNameLabel" destination="pKu-FA-opq" id="cmk-kL-3YO"/>
+                                            <outlet property="gamePriceLabel" destination="tzF-Tq-dTg" id="6U8-E6-7q0"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="IndicatorTableViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="107" id="0O4-75-rxG" customClass="IndicatorTableViewCell" customModule="iOSCarePlus_MVVM" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="556" width="414" height="107"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0O4-75-rxG" id="MMz-RN-eSJ">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="107"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="9Rk-H4-R8m">
+                                                    <rect key="frame" x="188" y="43" width="20" height="20"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </activityIndicatorView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="indicatorView" destination="9Rk-H4-R8m" id="qpU-WZ-zNu"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="6il-dT-K3H" id="4zg-hR-v9t"/>
+                                    <outlet property="delegate" destination="6il-dT-K3H" id="s2t-UF-Get"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="QpL-uq-NIN"/>
