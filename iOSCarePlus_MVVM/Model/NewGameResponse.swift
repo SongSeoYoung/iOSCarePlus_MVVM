@@ -8,7 +8,7 @@
 import Foundation
 
 //MARK: - API 받아와서 사용할 모델
-struct NewGameContent: Decodable {
+class NewGameContent: Decodable {
     let formalName: String
     let heroBannerURL: String
     let screenshots: [ScreenShotContent]
@@ -20,15 +20,15 @@ struct NewGameContent: Decodable {
     }
 }
 
-struct ScreenShotContent: Decodable {
+class ScreenShotContent: Decodable {
     let images: [ImageURL]
 }
 
-struct ImageURL: Decodable {
+class ImageURL: Decodable {
     let url: String
 }
 
-struct NewGameResponse: Decodable {
+class NewGameResponse: Decodable {
     var contents: [NewGameContent]
     let length: Int
     let offset: Int

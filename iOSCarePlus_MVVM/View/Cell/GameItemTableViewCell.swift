@@ -5,22 +5,22 @@
 //  Created by 송서영 on 2021/02/18.
 //
 
-import UIKit
 import SnapKit
+import UIKit
+import Kingfisher
 
 class GameItemTableViewCell: UITableViewCell {
-
-    @IBOutlet weak var gamePriceLabel: UILabel!
-    @IBOutlet weak var gameDiscountLabel: UILabel!
-    @IBOutlet weak var gameNameLabel: UILabel!
-    @IBOutlet weak var gameImage: UIImageView!
-    let viewModel = GameItemCellViewModel()
+    @IBOutlet private weak var gamePriceLabel: UILabel!
+    @IBOutlet private weak var gameDiscountLabel: UILabel!
+    @IBOutlet private weak var gameNameLabel: UILabel!
+    @IBOutlet private weak var gameImage: UIImageView!
+    let viewModel: GameItemCellViewModel = GameItemCellViewModel()
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         setLayout()
+        viewModel.delegate = self
     }
-    
-  
     
     func setLayout() {
         gameImage.snp.makeConstraints {
@@ -42,6 +42,27 @@ class GameItemTableViewCell: UITableViewCell {
         gamePriceLabel.snp.makeConstraints {
             $0.leading.equalTo(gameDiscountLabel.snp.trailing).offset(9)
             $0.top.bottom.equalTo(gameDiscountLabel)
+        }
+    }
+
+}
+extension GameItemTableViewCell: GameItemCellViewModelDelegate {
+    func setUIFromModel() {
+        guard let model = viewModel.model else { return }
+        let imageURL: URL? = URL(string: model.imageURL)
+        let borderColor: CGColor? = UIColor(red: 236 / 255.0, green: 236 / 255.0, blue: 236 / 255.0, alpha: 1).cgColor
+        //rgb 는 0~1사이 값을 받기 대문에 우리가원하는 값을 소수점으로 나눠서 표현함
+        gameImage.kf.setImage(with: imageURL)
+        gameImage.layer.cornerRadius = 9
+        gameImage.layer.borderWidth = 1
+        gameImage.layer.borderColor = borderColor
+        gameNameLabel.text = model.gameTitle
+        if let discountPrice: Int = model.gameDiscountPrice {
+            gameDiscountLabel.text = "\(discountPrice)"
+            gamePriceLabel.text = "\(model.gameOriginPrice)"
+        } else {
+            gamePriceLabel.text = "\(model.gameOriginPrice)"
+            gameDiscountLabel.isHidden = true
         }
     }
 }

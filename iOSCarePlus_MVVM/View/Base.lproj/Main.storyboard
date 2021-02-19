@@ -131,7 +131,7 @@ Store</string>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="GameItemTableViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="92" id="JUD-ox-PQK" customClass="GameItemTableViewCell" customModule="iOSCarePlus_MVVM" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="GameItemTableViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="GameItemTableViewCell" rowHeight="92" id="JUD-ox-PQK" customClass="GameItemTableViewCell" customModule="iOSCarePlus_MVVM" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="464" width="414" height="92"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JUD-ox-PQK" id="AlV-Fy-jiA">
@@ -172,7 +172,7 @@ Store</string>
                                             <outlet property="gamePriceLabel" destination="tzF-Tq-dTg" id="6U8-E6-7q0"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="IndicatorTableViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="107" id="0O4-75-rxG" customClass="IndicatorTableViewCell" customModule="iOSCarePlus_MVVM" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="IndicatorTableViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="IndicatorTableViewCell" rowHeight="107" id="0O4-75-rxG" customClass="IndicatorTableViewCell" customModule="iOSCarePlus_MVVM" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="556" width="414" height="107"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0O4-75-rxG" id="MMz-RN-eSJ">

@@ -8,13 +8,18 @@
 import Alamofire
 import Foundation
 
+protocol GameListViewModelDelegate: class {
+    func tableViewudpate()
+}
 class GameListViewModel {
+    weak var delegate: GameListViewModelDelegate?
+    
     var model: NewGameResponse? {
-        didSet{
-            print("didset")
+        didSet {
+            delegate?.tableViewudpate()
         }
     }
-    
+    var flag: Bool = false
     var newCount: Int = 10
     var newOffset: Int = 0
     var getNewGameListURL: String {
@@ -30,14 +35,12 @@ class GameListViewModel {
         "https://ec.nintendo.com/api/KR/ko/search/new?count=\(newCount)&offset=\(newOffset)"
     }
     var isEnd: Bool = false
-    //indicator를 불러야할 타이밍인지 체크하는 함수
     func isIndicatorCell(_ indexPath: IndexPath) -> Bool {
         indexPath.row == model?.contents.count
     }
     func gameListApiCall(_ url: String) {
         AF.request(url).responseJSON { [weak self] response in
             guard let data = response.data else { return }
-            //request 의 결과는 response 에서 가져오는 클로저로 작업
             let decoder: JSONDecoder = JSONDecoder() //객체생성
             //newModel 은 api 에서 새로 불러온 데이터
             guard let newModel: NewGameResponse = try? decoder.decode(NewGameResponse.self, from: data) else { return }
