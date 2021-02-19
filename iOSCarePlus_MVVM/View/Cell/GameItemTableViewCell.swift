@@ -6,8 +6,8 @@
 //
 
 import SnapKit
-import UIKit
 import Kingfisher
+import UIKit
 
 class GameItemTableViewCell: UITableViewCell {
     @IBOutlet private weak var gamePriceLabel: UILabel!
@@ -44,14 +44,13 @@ class GameItemTableViewCell: UITableViewCell {
             $0.top.bottom.equalTo(gameDiscountLabel)
         }
     }
-
 }
+// MARK: - GameItemCellViewModel Delegate
 extension GameItemTableViewCell: GameItemCellViewModelDelegate {
     func setUIFromModel() {
         guard let model = viewModel.model else { return }
         let imageURL: URL? = URL(string: model.imageURL)
         let borderColor: CGColor? = UIColor(red: 236 / 255.0, green: 236 / 255.0, blue: 236 / 255.0, alpha: 1).cgColor
-        //rgb 는 0~1사이 값을 받기 대문에 우리가원하는 값을 소수점으로 나눠서 표현함
         gameImage.kf.setImage(with: imageURL)
         gameImage.layer.cornerRadius = 9
         gameImage.layer.borderWidth = 1
@@ -63,6 +62,11 @@ extension GameItemTableViewCell: GameItemCellViewModelDelegate {
         } else {
             gamePriceLabel.text = "\(model.gameOriginPrice)"
             gameDiscountLabel.isHidden = true
+            gamePriceLabel.snp.makeConstraints {
+                $0.leading.equalTo(gameNameLabel.snp.leading)
+                $0.bottom.equalToSuperview().inset(37)
+                $0.top.equalTo(gameNameLabel.snp.bottom)
+            }
         }
     }
 }

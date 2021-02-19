@@ -7,14 +7,12 @@
 
 import Foundation
 
-protocol GameItemCellViewModelDelegate: class {
+protocol GameItemCellViewModelDelegate: AnyObject {
     func setUIFromModel()
 }
 
 class GameItemCellViewModel {
-    
-    var delegate: GameItemCellViewModelDelegate?
-    
+    weak var delegate: GameItemCellViewModelDelegate?
     var model: GameItemModel? {
         //model 값이 바귀면 진행되도록
         didSet {
