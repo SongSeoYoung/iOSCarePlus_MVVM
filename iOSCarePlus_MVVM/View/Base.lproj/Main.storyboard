@@ -110,12 +110,18 @@ Store</string>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
                                             <state key="normal" title="New"/>
+                                            <connections>
+                                                <action selector="newButtonTapped:" destination="6il-dT-K3H" eventType="touchUpInside" id="hcf-ZB-qEK"/>
+                                            </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IOC-OC-grc" customClass="SelectableButton" customModule="iOSCarePlus_MVVM" customModuleProvider="target">
                                             <rect key="frame" x="271" y="296" width="53" height="44"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
                                             <state key="normal" title="Sale"/>
+                                            <connections>
+                                                <action selector="saleButtonTapped:" destination="6il-dT-K3H" eventType="touchUpInside" id="8jV-si-hSF"/>
+                                            </connections>
                                         </button>
                                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EXq-A2-tHJ">
                                             <rect key="frame" x="69" y="381" width="60" height="2"/>

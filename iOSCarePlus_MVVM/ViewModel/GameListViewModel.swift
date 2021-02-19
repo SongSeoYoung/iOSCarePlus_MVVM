@@ -16,6 +16,7 @@ class GameListViewModel {
     
     var model: NewGameResponse? {
         didSet {
+            print("model did set")
             delegate?.tableViewudpate()
         }
     }
@@ -42,11 +43,14 @@ class GameListViewModel {
             guard let newModel: NewGameResponse = try? decoder.decode(NewGameResponse.self, from: data) else { return }
             
             if self?.model == nil {
+                print("make new model")
                 self?.model = newModel
             } else {
                 if newModel.contents.isEmpty {
+                    print("model end")
                     self?.isEnd = true
                 }
+                print("model append")
                 self?.model?.contents.append(contentsOf: newModel.contents)
             }
         }

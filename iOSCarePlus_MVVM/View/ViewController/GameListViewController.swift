@@ -5,10 +5,8 @@
 //  Created by 송서영 on 2021/02/18.
 //
 
-// MARK:  ViewModel 에서 model 을 참고해도될까? 모델이 업데이트될 때 마다 테이블뷰가 리로드되는 프로퍼티옵저버를 만들어서 didSEt 일 때 업데이트되도록하는 것.
-
 import UIKit
-import RxSwift
+import SnapKit
 
 class GameListViewController: UIViewController {
     @IBOutlet private weak var topView: UIView!
@@ -21,6 +19,7 @@ class GameListViewController: UIViewController {
     @IBOutlet private weak var gameListTableView: UITableView!
     // MARK: - ViewModel
     var viewModel: GameListViewModel = GameListViewModel()
+    var buttonLineCenter: ConstraintMakerEditable?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +28,7 @@ class GameListViewController: UIViewController {
         topViewSubView.layer.cornerRadius = 8.0
         viewModel.gameListApiCall(viewModel.gameNewItemListURL)
         viewModel.delegate = self
+        newBtn.isSelected = true
     }
     // MARK: - Set Layout
     func setLayout() {
@@ -62,32 +62,62 @@ class GameListViewController: UIViewController {
             $0.width.equalTo(60)
             $0.top.equalTo(newBtn.snp.bottom).offset(4)
             $0.leading.equalTo(newBtn)
+            $0.centerX.equalTo(newBtn)
         }
+    }
+    
+    @IBAction private func newButtonTapped(_ sender: Any) {
+        newBtn.isSelected = true
+        saleBtn.isSelected = false
+        
+        UIView.animate(withDuration: 0.1) { [weak self] in
+//            self?.buttonLine.snp.makeConstraints {
+//                $0.centerX.equalTo(self?.newBtn.snp.center as! ConstraintRelatableTarget)
+//            }
+            self?.view.layoutIfNeeded()
+        }
+
+        viewModel.newOffset = 0
+        viewModel.model = nil
+        viewModel.gameListApiCall(viewModel.gameNewItemListURL)
+    }
+    
+    @IBAction private func saleButtonTapped(_ sender: Any) {
+        saleBtn.isSelected = true
+        newBtn.isSelected = false
+
+//        let constant: CGFloat = saleBtn.center.x - newBtn.center.x
+//        UIView.animate(withDuration: 0.1) { [weak self] in
+//            self?.buttonLine.snp.makeConstraints {
+//                $0.centerX.equalTo(self?.saleBtn.snp.center as! ConstraintRelatableTarget)
+//            }
+//            self?.view.layoutIfNeeded()
+//        }
+
+        viewModel.newOffset = 0
+        viewModel.model = nil
+        viewModel.gameListApiCall(viewModel.gameSaleItemListURL)
     }
 }
 
 // MARK: - tableView DataSource & Delegate
 extension GameListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("갯수반환")
         if viewModel.isEnd {
             //new Model 이 없을 때
-            print("no new model")
             return (viewModel.model?.contents.count ?? 0)
         } else {
             if viewModel.model == nil {
                 //통신 이전에는 model 이 비어있으니 그럴 경우 셀 0개 반환
-                print("view model is nil")
                 return 1
             }
-            return (viewModel.model?.contents.count ?? 0) + 1     //무한스크롤링을 위해 하나 더 그려주도록한다.
+            return (viewModel.model?.contents.count ?? 0) + 1
         }
     }
     
     //display 하기 직전 cell for row at 보다 더 빨리 불린다.
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if viewModel.isIndicatorCell(indexPath) {
-            print("인디케이터를 불러야할 타이밍")
             self.gameListTableView.reloadData()
             viewModel.newOffset += 10
             viewModel.gameListApiCall(viewModel.gameNewItemListURL)
@@ -95,9 +125,7 @@ extension GameListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print("cell for row at")
         if viewModel.isIndicatorCell(indexPath) {
-            print("indicator time")
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "IndicatorTableViewCell", for: indexPath) as? IndicatorTableViewCell else { return UITableViewCell() }
             cell.animationIndicatorView()
             return cell
@@ -106,7 +134,6 @@ extension GameListViewController: UITableViewDelegate, UITableViewDataSource {
                 withIdentifier: "GameItemTableViewCell", for: indexPath) as? GameItemTableViewCell ,
               let content = viewModel.model?.contents[indexPath.row]
         else {
-            print("content error")
             return UITableViewCell()
         }
         let model: GameItemModel = GameItemModel( gameTitle: content.formalName,
@@ -121,9 +148,9 @@ extension GameListViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
+// MARK: - GameListViewModel delegate
 extension GameListViewController: GameListViewModelDelegate {
     func tableViewudpate() {
         gameListTableView.reloadData()
-        print("reload data")
     }
 }
