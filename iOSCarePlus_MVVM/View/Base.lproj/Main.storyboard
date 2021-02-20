@@ -272,7 +272,7 @@ Store</string>
         <!--Game Detail Page View Controller-->
         <scene sceneID="4Pm-pS-3Ki">
             <objects>
-                <viewController storyboardIdentifier="GameDetailPageViewController" id="5QA-N3-fHD" customClass="GameDetailPageViewController" customModule="iOSCarePlus_MVVM" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GameDetailPageViewController" autoresizesArchivedViewToFullSize="NO" id="5QA-N3-fHD" customClass="GameDetailPageViewController" customModule="iOSCarePlus_MVVM" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dNV-eU-6Eh">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="430"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -31,6 +31,7 @@
 		7C82F94725DFFEA7001F3E73 /* GameDetailPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C82F94625DFFEA7001F3E73 /* GameDetailPageViewController.swift */; };
 		7C82F94B25E00031001F3E73 /* GameImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C82F94A25E00031001F3E73 /* GameImageViewController.swift */; };
 		7C82F94E25E000D7001F3E73 /* GameDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C82F94D25E000D7001F3E73 /* GameDetailViewModel.swift */; };
+		7C82F95125E0A976001F3E73 /* GameDetailPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C82F95025E0A976001F3E73 /* GameDetailPageViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +56,7 @@
 		7C82F94625DFFEA7001F3E73 /* GameDetailPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetailPageViewController.swift; sourceTree = "<group>"; };
 		7C82F94A25E00031001F3E73 /* GameImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameImageViewController.swift; sourceTree = "<group>"; };
 		7C82F94D25E000D7001F3E73 /* GameDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetailViewModel.swift; sourceTree = "<group>"; };
+		7C82F95025E0A976001F3E73 /* GameDetailPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetailPageViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +134,7 @@
 				7C37498A25DE58A8000E8B65 /* GameListViewModel.swift */,
 				7C37499C25DE6F7D000E8B65 /* GameItemCellViewModel.swift */,
 				7C82F94D25E000D7001F3E73 /* GameDetailViewModel.swift */,
+				7C82F95025E0A976001F3E73 /* GameDetailPageViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -284,6 +287,7 @@
 				7C37499725DE666A000E8B65 /* GameItemTableViewCell.swift in Sources */,
 				7C37498825DE5872000E8B65 /* GameListViewController.swift in Sources */,
 				7C3748C425D97DBE000E8B65 /* SceneDelegate.swift in Sources */,
+				7C82F95125E0A976001F3E73 /* GameDetailPageViewModel.swift in Sources */,
 				7C82F94725DFFEA7001F3E73 /* GameDetailPageViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
