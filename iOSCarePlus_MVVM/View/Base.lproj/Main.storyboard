@@ -221,6 +221,35 @@ Store</string>
             </objects>
             <point key="canvasLocation" x="1731.8840579710147" y="503.57142857142856"/>
         </scene>
+        <!--Game Detail View Controller-->
+        <scene sceneID="W48-wi-BcD">
+            <objects>
+                <viewController storyboardIdentifier="GameDetailViewController" id="ltz-8c-JLc" customClass="GameDetailViewController" customModule="iOSCarePlus_MVVM" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9vw-CG-4Lh">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6ob-oP-I06">
+                                <rect key="frame" x="0.0" y="44" width="414" height="430"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="6ob-oP-I06" secondAttribute="height" multiplier="1:1" id="7pE-7I-1cc"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="5QA-N3-fHD" kind="embed" id="P8R-y5-DZW"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="TNR-bI-OV2"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <connections>
+                        <outlet property="containerView" destination="6ob-oP-I06" id="6Ql-Be-Uhf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oPE-L8-20g" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2459.4202898550725" y="533.70535714285711"/>
+        </scene>
         <!--Item-->
         <scene sceneID="YKA-St-sNx">
             <objects>
@@ -239,6 +268,44 @@ Store</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LZn-f7-29P" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="974" y="504"/>
+        </scene>
+        <!--Game Detail Page View Controller-->
+        <scene sceneID="4Pm-pS-3Ki">
+            <objects>
+                <viewController storyboardIdentifier="GameDetailPageViewController" id="5QA-N3-fHD" customClass="GameDetailPageViewController" customModule="iOSCarePlus_MVVM" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dNV-eU-6Eh">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="430"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RQ0-cI-evW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3229" y="504"/>
+        </scene>
+        <!--Game Image View Controller-->
+        <scene sceneID="DFR-M6-ob0">
+            <objects>
+                <viewController storyboardIdentifier="GameImageViewController" id="lZL-cr-xFo" customClass="GameImageViewController" customModule="iOSCarePlus_MVVM" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xB2-ie-qWB">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2MV-tW-zre">
+                                <rect key="frame" x="105" y="408" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="lAo-Iy-0Oc"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="2MV-tW-zre" id="Y3j-Fl-Q1L"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Uve-Fl-5LT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3933" y="504"/>
         </scene>
     </scenes>
     <resources>

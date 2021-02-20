@@ -5,8 +5,8 @@
 //  Created by 송서영 on 2021/02/18.
 //
 
-import UIKit
 import SnapKit
+import UIKit
 
 class GameListViewController: UIViewController {
     @IBOutlet private weak var topView: UIView!
@@ -19,7 +19,7 @@ class GameListViewController: UIViewController {
     @IBOutlet private weak var gameListTableView: UITableView!
     // MARK: - ViewModel
     var viewModel: GameListViewModel = GameListViewModel()
-    var buttonLineCenter: ConstraintMakerEditable?
+    var buttonLineCenter: Constraint?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,7 +62,6 @@ class GameListViewController: UIViewController {
             $0.width.equalTo(60)
             $0.top.equalTo(newBtn.snp.bottom).offset(4)
             $0.leading.equalTo(newBtn)
-            $0.centerX.equalTo(newBtn)
         }
     }
     
@@ -71,9 +70,7 @@ class GameListViewController: UIViewController {
         saleBtn.isSelected = false
         
         UIView.animate(withDuration: 0.1) { [weak self] in
-//            self?.buttonLine.snp.makeConstraints {
-//                $0.centerX.equalTo(self?.newBtn.snp.center as! ConstraintRelatableTarget)
-//            }
+            
             self?.view.layoutIfNeeded()
         }
 
@@ -86,13 +83,10 @@ class GameListViewController: UIViewController {
         saleBtn.isSelected = true
         newBtn.isSelected = false
 
-//        let constant: CGFloat = saleBtn.center.x - newBtn.center.x
-//        UIView.animate(withDuration: 0.1) { [weak self] in
-//            self?.buttonLine.snp.makeConstraints {
-//                $0.centerX.equalTo(self?.saleBtn.snp.center as! ConstraintRelatableTarget)
-//            }
-//            self?.view.layoutIfNeeded()
-//        }
+        UIView.animate(withDuration: 0.1) { [weak self] in
+            
+            self?.view.layoutIfNeeded()
+        }
 
         viewModel.newOffset = 0
         viewModel.model = nil
@@ -101,7 +95,7 @@ class GameListViewController: UIViewController {
 }
 
 // MARK: - tableView DataSource & Delegate
-extension GameListViewController: UITableViewDelegate, UITableViewDataSource {
+extension GameListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if viewModel.isEnd {
             //new Model 이 없을 때
@@ -145,6 +139,16 @@ extension GameListViewController: UITableViewDelegate, UITableViewDataSource {
         cell.viewModel.setModel(model)
         
         return cell
+    }
+}
+
+
+// MARK: - tableView delegate
+extension GameListViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let gameDetailViewController: GameDetailViewController = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "GameDetailViewController") as? GameDetailViewController else { return }
+        gameDetailViewController.viewModel.model = viewModel.model?.contents[indexPath.row]
+        navigationController?.pushViewController(gameDetailViewController, animated: true)
     }
 }
 
