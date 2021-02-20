@@ -26,12 +26,13 @@ class GameItemTableViewCell: UITableViewCell {
         gameImage.snp.makeConstraints {
             $0.leading.equalToSuperview().offset(20)
             $0.top.equalToSuperview().offset(10)
+            $0.bottom.equalToSuperview().inset(10)
             $0.height.equalTo(69)
             $0.width.equalTo(122)
         }
         gameNameLabel.snp.makeConstraints {
             $0.leading.equalTo(gameImage.snp.trailing).offset(13)
-            $0.trailing.equalToSuperview().offset(13)
+            $0.trailing.equalToSuperview().inset(20)
             $0.top.equalToSuperview().offset(12)
         }
         gameDiscountLabel.snp.makeConstraints {
