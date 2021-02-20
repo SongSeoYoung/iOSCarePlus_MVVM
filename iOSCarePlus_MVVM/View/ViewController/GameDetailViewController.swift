@@ -15,7 +15,6 @@ class GameDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("game deatilViewController")
         setLayout()
     }
     
@@ -25,8 +24,8 @@ class GameDetailViewController: UIViewController {
             $0.trailing.equalToSuperview()
         }
     }
+    //view 에서 모델 참조가 가능한가..?
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        //segue 로 pageviewController가 연결되어있기때문에 Destination 이 gamedetailpageViewcon 이면 모델 값을 넣어주는 형식
         (segue.destination as? GameDetailPageViewController)?.viewModel.model = viewModel.model
         //let destination = segue.destination as? GAmeDetailPageViewController
         //destination.model = model 과 같은 표현

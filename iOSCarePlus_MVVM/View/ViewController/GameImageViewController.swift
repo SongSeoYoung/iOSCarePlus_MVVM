@@ -8,21 +8,24 @@
 import UIKit
 
 class GameImageViewController: UIViewController {
-
     @IBOutlet private weak var imageView: UIImageView!
     var url: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setLayout()
-        
-        guard let stringURL = url else{ return }
-        let url: URL? = URL(string: stringURL)
-        imageView.kf.setImage(with: url)
+        setImage()
     }
     
-    func setLayout() {
+    private func setLayout() {
         imageView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
+    }
+    
+    private func setImage() {
+        guard let stringURL = url else { return }
+        let url: URL? = URL(string: stringURL)
+        imageView.kf.setImage(with: url)
     }
 }

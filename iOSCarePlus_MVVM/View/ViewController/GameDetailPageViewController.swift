@@ -18,15 +18,13 @@ class GameDetailPageViewController: UIPageViewController {
         viewModel.setScreenShots()?.forEach {
             orderedViewControllers?.append($0)
         }
-        print("game page view controller")
         setFirstViewController()
-        
     }
     required init?(coder: NSCoder) {
-        super.init(transitionStyle: .scroll , navigationOrientation: .horizontal, options: nil)
+        super.init(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
     }
     func setFirstViewController() {
-        if let firstViewController = orderedViewControllers?.first {
+        if let firstViewController: UIViewController = orderedViewControllers?.first {
             setViewControllers([firstViewController], direction: .forward, animated: true, completion: nil)
             print("fisrt viewcontroller setting")
         }
@@ -42,7 +40,6 @@ extension GameDetailPageViewController: UIPageViewControllerDataSource {
         return orderedViewControllers?[beforeIndex]
     }
     
-
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         guard let currentIndex: Int = orderedViewControllers?.firstIndex(of: viewController) else { return nil }
         let afterIndex: Int = currentIndex + 1
