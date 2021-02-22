@@ -24,7 +24,6 @@ class GameListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setLayout()
-        self.navigationController?.navigationBar.isHidden = true
         topViewSubView.layer.cornerRadius = 8.0
         viewModel.gameListApiCall(viewModel.gameNewItemListURL)
         viewModel.delegate = self

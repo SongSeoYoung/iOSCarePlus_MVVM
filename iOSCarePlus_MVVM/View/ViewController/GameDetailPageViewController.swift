@@ -19,6 +19,7 @@ class GameDetailPageViewController: UIPageViewController {
             orderedViewControllers?.append($0)
         }
         setFirstViewController()
+        self.navigationController?.navigationBar.isHidden = false
     }
     required init?(coder: NSCoder) {
         super.init(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
@@ -26,7 +27,6 @@ class GameDetailPageViewController: UIPageViewController {
     func setFirstViewController() {
         if let firstViewController: UIViewController = orderedViewControllers?.first {
             setViewControllers([firstViewController], direction: .forward, animated: true, completion: nil)
-            print("fisrt viewcontroller setting")
         }
     }
 }
