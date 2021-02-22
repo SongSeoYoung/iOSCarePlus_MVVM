@@ -5,12 +5,11 @@
 //  Created by 송서영 on 2021/02/18.
 //
 
-import UIKit
 import SnapKit
+import UIKit
 
 class IndicatorTableViewCell: UITableViewCell {
-
-    @IBOutlet weak var indicatorView: UIActivityIndicatorView!
+    @IBOutlet private weak var indicatorView: UIActivityIndicatorView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

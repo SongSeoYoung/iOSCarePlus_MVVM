@@ -19,7 +19,7 @@ class GameListViewController: UIViewController {
     @IBOutlet private weak var gameListTableView: UITableView!
     // MARK: - ViewModel
     var viewModel: GameListViewModel = GameListViewModel()
-    var buttonLineCenter: Constraint?
+//    var buttonLineCenter: Constraint?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,7 +75,7 @@ class GameListViewController: UIViewController {
         }
 
         viewModel.newOffset = 0
-        viewModel.model = nil
+        viewModel.setModelToNil()
         viewModel.gameListApiCall(viewModel.gameNewItemListURL)
     }
     
@@ -89,7 +89,7 @@ class GameListViewController: UIViewController {
         }
 
         viewModel.newOffset = 0
-        viewModel.model = nil
+        viewModel.setModelToNil()
         viewModel.gameListApiCall(viewModel.gameSaleItemListURL)
     }
 }
@@ -99,13 +99,15 @@ extension GameListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if viewModel.isEnd {
             //new Model 이 없을 때
-            return (viewModel.model?.contents.count ?? 0)
+            let modelContentsCount: Int? = viewModel.getModelContentsCount()
+            return (modelContentsCount ?? 0)
         } else {
-            if viewModel.model == nil {
+            if viewModel.getModel() == nil {
                 //통신 이전에는 model 이 비어있으니 그럴 경우 셀 0개 반환
-                return 1
+                return 0
             }
-            return (viewModel.model?.contents.count ?? 0) + 1
+            let modelContentsCount: Int? = viewModel.getModelContentsCount()
+            return (modelContentsCount ?? 0) + 1
         }
     }
     
@@ -126,23 +128,15 @@ extension GameListViewController: UITableViewDataSource {
         }
         guard let cell = tableView.dequeueReusableCell(
                 withIdentifier: "GameItemTableViewCell", for: indexPath) as? GameItemTableViewCell ,
-              let content = viewModel.model?.contents[indexPath.row]
+              let content = viewModel.getContent(of: indexPath.row)
         else {
             return UITableViewCell()
         }
-        let model: GameItemModel = GameItemModel( gameTitle: content.formalName,
-                                                  gameOriginPrice: 100,
-                                                  gameDiscountPrice: nil,
-                                                  imageURL: content.heroBannerURL,
-                                                  screenshots: content.screenshots
-        )
-        cell.viewModel.setModel(model)
+        cell.viewModel.setModel(viewModel.setCellModel(of: content))
         
         return cell
     }
 }
-
-
 // MARK: - tableView delegate
 extension GameListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

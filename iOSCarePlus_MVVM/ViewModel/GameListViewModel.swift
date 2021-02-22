@@ -20,7 +20,6 @@ class GameListViewModel {
             delegate?.tableViewudpate()
         }
     }
-    var flag: Bool = false
     var newCount: Int = 10
     var newOffset: Int = 0
     var getNewGameListURL: String {
@@ -54,5 +53,28 @@ class GameListViewModel {
                 self?.model?.contents.append(contentsOf: newModel.contents)
             }
         }
+    }
+    
+    func setModelToNil() {
+        self.model = nil
+    }
+    
+    func getModelContentsCount() -> Int? {
+        return model?.contents.count
+    }
+    func getModel() -> NewGameResponse? {
+        return model
+    }
+    func getContent(of indexPathRow: Int) -> NewGameContent? {
+        return self.model?.contents[indexPathRow]
+    }
+    func setCellModel(of content: NewGameContent) -> GameItemModel {
+        let model: GameItemModel = GameItemModel( gameTitle: content.formalName,
+                                                  gameOriginPrice: 100,
+                                                  gameDiscountPrice: nil,
+                                                  imageURL: content.heroBannerURL,
+                                                  screenshots: content.screenshots
+        )
+        return model
     }
 }
