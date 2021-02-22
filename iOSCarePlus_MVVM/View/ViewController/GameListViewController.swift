@@ -60,7 +60,8 @@ class GameListViewController: UIViewController {
             $0.height.equalTo(2)
             $0.width.equalTo(60)
             $0.top.equalTo(newBtn.snp.bottom).offset(4)
-            $0.leading.equalTo(newBtn)
+//            $0.leading.equalTo(newBtn)
+            $0.centerX.equalTo(newBtn.snp.centerX)
         }
     }
     
@@ -69,7 +70,12 @@ class GameListViewController: UIViewController {
         saleBtn.isSelected = false
         
         UIView.animate(withDuration: 0.1) { [weak self] in
-            
+            self?.buttonLine.snp.remakeConstraints {
+                $0.height.equalTo(2)
+                $0.width.equalTo(60)
+                $0.top.equalTo(self?.newBtn.snp.bottom as! ConstraintRelatableTarget).offset(4)
+                $0.centerX.equalTo(self?.newBtn.snp.centerX as! ConstraintRelatableTarget)
+            }
             self?.view.layoutIfNeeded()
         }
 
@@ -83,7 +89,12 @@ class GameListViewController: UIViewController {
         newBtn.isSelected = false
 
         UIView.animate(withDuration: 0.1) { [weak self] in
-            
+            self?.buttonLine.snp.remakeConstraints {
+                $0.height.equalTo(2)
+                $0.width.equalTo(60)
+                $0.top.equalTo(self?.saleBtn.snp.bottom as! ConstraintRelatableTarget).offset(4)
+                $0.centerX.equalTo(self?.saleBtn.snp.centerX as! ConstraintRelatableTarget)
+            }
             self?.view.layoutIfNeeded()
         }
 
