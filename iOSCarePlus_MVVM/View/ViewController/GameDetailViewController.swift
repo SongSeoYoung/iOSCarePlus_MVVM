@@ -18,16 +18,14 @@ class GameDetailViewController: UIViewController {
         setLayout()
     }
     
-    func setLayout() {
+    private func setLayout() {
         containerView.snp.makeConstraints {
             $0.leading.equalToSuperview()
             $0.trailing.equalToSuperview()
         }
     }
-    //view 에서 모델 참조가 가능한가..?
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        (segue.destination as? GameDetailPageViewController)?.viewModel.model = viewModel.model
-        //let destination = segue.destination as? GAmeDetailPageViewController
-        //destination.model = model 과 같은 표현
+        (segue.destination as? GameDetailPageViewController)?.viewModel.setModel(of: viewModel.getModel())
     }
 }

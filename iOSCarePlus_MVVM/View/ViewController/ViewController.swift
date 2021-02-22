@@ -8,7 +8,6 @@ import SnapKit
 import UIKit
 
 class ViewController: UIViewController {
-    
     @IBOutlet private weak var backgroundImage: UIImageView!
     @IBOutlet private weak var appView: UIView!
     @IBOutlet private weak var appTitleLabel: UILabel!

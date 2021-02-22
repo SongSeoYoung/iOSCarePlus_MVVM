@@ -140,8 +140,9 @@ extension GameListViewController: UITableViewDataSource {
 // MARK: - tableView delegate
 extension GameListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let gameDetailViewController: GameDetailViewController = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "GameDetailViewController") as? GameDetailViewController else { return }
-        gameDetailViewController.viewModel.model = viewModel.model?.contents[indexPath.row]
+        guard let gameDetailViewController: GameDetailViewController = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "GameDetailViewController") as? GameDetailViewController,
+              let content = viewModel.getContent(of: indexPath.row) else { return }
+        gameDetailViewController.viewModel.setModel(of: content)
         navigationController?.pushViewController(gameDetailViewController, animated: true)
     }
 }

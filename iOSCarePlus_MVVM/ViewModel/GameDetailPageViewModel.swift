@@ -26,4 +26,7 @@ class GameDetailPageViewModel {
         imageViewController.url = url
         return imageViewController
     }
+    func setModel(of model: NewGameContent?) {
+        self.model = model
+    }
 }

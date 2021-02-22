@@ -9,5 +9,10 @@ import UIKit
 
 class GameDetailViewModel {
     var model: NewGameContent?
-
+    func setModel(of content: NewGameContent) {
+        self.model = content
+    }
+    func getModel() -> NewGameContent? {
+        return model
+    }
 }
